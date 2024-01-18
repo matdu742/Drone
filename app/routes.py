@@ -49,3 +49,5 @@ def drone_reconnect():
         return jsonify({"status": "success"})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
+    
+    
