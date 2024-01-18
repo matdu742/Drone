@@ -15,8 +15,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        
     </head>
-    <body id="page-top">
+    <body id="page-top" class="bg-black d-flex flex-column min-vh-100">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
@@ -30,26 +31,29 @@
                         <li class="nav-item"><a class="nav-link" href="./free-control">Libre</a></li>
                         <li class="nav-item"><a class="nav-link" href="./rescue-control">Sauvetage</a></li>
                         <li class="nav-item"><a class="nav-link" href="./security-control">Sécurite</a></li>
-                        <li class="nav-item"><button id="reconnect-btn">Reconnecter le Drone</button></li>
+                        <li class="nav-item"><a class="nav-link" href="./gallery">Photos</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+
         <!-- Masthead-->
-        <header class="masthead">
-            <h1>Masonry Gallery</h1>
-            <div class="gallery" id="gallery">
-                <!-- 
-                    Jinja2 boucle 
-                    (utiliser du python sur du html similaire a avoir une page en php mais php pas compatible avec flask)
-                -->
-                {% for image in images %}
-                    <div class="gallery-item">
-                        <div class="content">
-                            <img src="{{ url_for('static', filename='assets/img/droneSaved/' ~ image) }}" alt="">
+        <header class="masthead flex-grow-1">
+            <div class="container px-4 px-lg-5  h-100 align-items-center justify-content-center">
+                <h1 class="mx-auto my-0 text-uppercase galleryH1">Gallery</h1>
+                <div class="gallery" id="gallery">
+                    <!-- 
+                        Jinja2 boucle 
+                        (utiliser du python sur du html similaire a avoir une page en php mais php pas compatible avec flask)
+                    -->
+                    {% for image in images %}
+                        <div class="gallery-item">
+                            <div class="content">
+                                <img src="{{ url_for('static', filename='assets/img/droneSaved/' ~ image) }}" alt="">
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </header>
         

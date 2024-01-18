@@ -2,6 +2,7 @@ from flask import render_template, Flask, Response
 from app import app, tello_controller 
 import cv2
 from flask import jsonify
+import os 
 
 def generate_video_stream():
     while True:
@@ -26,6 +27,14 @@ def rescue_control():
 @app.route('/security-control')
 def security_control():
     return render_template('page/securityControl.html')
+
+
+@app.route('/gallery')
+def gallery():
+    image_folder = os.path.join(app.static_folder, 'assets/img/droneSaved')
+    images = os.listdir(image_folder)
+    return render_template('page/photoGalery.html', images=images)
+
 
 @app.route('/video_feed')
 def video_feed():

@@ -13123,6 +13123,7 @@ body {
 }
 
 
+
 /* CSS FOR IMAGE GALERY */
 
 .hello {
@@ -13269,4 +13270,8 @@ body {
     max-width: 100%;
     transform: rotate(0deg);
   }
+}
+
+.galleryH1{
+  margin-top: 50px !important;
 }
