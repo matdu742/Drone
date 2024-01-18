@@ -82,6 +82,20 @@ class TelloController:
             self.stop_movement()
 
         self.update_movement()
+        
+        
+    def move_security(self, distance_cm ,command):
+        if command == 'forward':
+            self.move_forward(distance_cm)
+        elif command == 'right':
+            self.tello.rotate_clockwise(distance_cm)
+        elif command == 'left':
+            self.tello.rotate_counter_clockwise(distance_cm)
+        
+        
+
+
+
 
     def stop_movement(self):
         self.for_back_velocity = 0
