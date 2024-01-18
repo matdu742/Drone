@@ -4,13 +4,7 @@ import cv2
 from flask import jsonify
 import os 
 
-def generate_video_stream():
-    while True:
-        frame = tello_controller.get_frame()  # Récupère la frame traitée depuis votre TelloController
-        ret, buffer = cv2.imencode('.jpg', frame)
-        frame = buffer.tobytes()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
 
 @app.route('/')
 def index():
@@ -35,6 +29,14 @@ def gallery():
     images = os.listdir(image_folder)
     return render_template('page/photoGalery.html', images=images)
 
+
+def generate_video_stream():
+    while True:
+        frame = tello_controller.get_frame()  # Récupère la frame traitée depuis votre TelloController
+        ret, buffer = cv2.imencode('.jpg', frame)
+        frame = buffer.tobytes()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/video_feed')
 def video_feed():
