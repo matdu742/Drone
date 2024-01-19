@@ -1,26 +1,27 @@
+from app import app, tello_controller 
+
 def fly_drone_automatically(lagFigure):
         lagFigureInitial = lagFigure
-        self.takeoff()
+        tello_controller.move_security(0,'takeoff')
         while lagFigure > 0:
-            ligne_droite_to(lagFigure)
-            turn_right(90)
-            ligne_droite_to(2)
-            turn_right(90)
+            tello_controller.move_security(lagFigure,'forward')
+            tello_controller.move_security(90,'right')
+            tello_controller.move_security(2,'forward')
+            tello_controller.move_security(90,'right')
             lagFigure -= 2
 
             if lagFigure <= 0:
-                self.turn_right(90)
-                self.ligne_droite_to(lagFigureInitial)
+                tello_controller.move_security(90,'right')
+                tello_controller.move_security(lagFigureInitial,'forward')
                 break
-
-            self.turn_left(90)
-            self.ligne_droite_to(2)
-            self.turn_left(90)
+            tello_controller.move_security(90,'left')
+            tello_controller.move_security(2,'forward')
+            tello_controller.move_security(90,'left')
             lagFigure -= 2
 
             if lagFigure <= 0:
-                self.turn_left(180)
-                self.ligne_droite_to(lagFigureInitial)
+                tello_controller.move_security(180,'left')
+                tello_controller.move_security(lagFigureInitial,'forward')
                 break
 
-        self.land()
+        tello_controller.move_security(0,'land')

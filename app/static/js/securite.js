@@ -57,8 +57,17 @@ function drawShape(x, y) {
         context.beginPath();
         context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
         context.stroke();
-        var diametreCm = pixelsToCm(2 * radius).toFixed(2);
+        var tailleCm = pixelsToCm(2 * radius).toFixed(2);
         tailleInfo.textContent = 'Diamètre du cercle : ' + diametreCm  + ' cm';
     }
+    
+    
+}
+
+function sendCommand(tailleCm) {
+    fetch(`/command/${tailleCm}`)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Erreur:', error));
 }
 

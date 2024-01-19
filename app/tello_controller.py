@@ -86,7 +86,11 @@ class TelloController:
         
     def move_security(self, distance_cm ,command):
         if command == 'forward':
-            self.move_forward(distance_cm)
+            self.tello.move_forward(distance_cm)
+        elif command == 'takeoff':
+            self.tello.takeoff()
+        elif command == 'land':
+            self.tello.land()
         elif command == 'right':
             self.tello.rotate_clockwise(distance_cm)
         elif command == 'left':

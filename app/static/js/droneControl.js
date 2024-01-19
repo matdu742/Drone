@@ -73,11 +73,7 @@ document.addEventListener('keyup', function(event) {
     }
 });
 
-function sendCommand(command) {
-    fetch(`/command/${command}`)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Erreur:', error));
+
 }
 
 
