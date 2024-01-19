@@ -7,7 +7,7 @@ def fly_drone_automatically(lagFigure):
             tello_controller.move_security(lagFigure,'forward')
             tello_controller.move_security(90,'right')
             tello_controller.move_security(2,'forward')
-            tello_controller.move_security(90,'right')
+            tello_controller.move_security(90,'right') 
             lagFigure -= 2
 
             if lagFigure <= 0:
